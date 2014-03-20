@@ -1,11 +1,11 @@
 (defn get-odds-and-evens [coll]
-  (let [{odds true evens false} (group-by __ coll)]
+  (let [{odds true evens false} (group-by (fn [x] (= (mod x 2) 0)) coll)]
     [odds evens]))
 
 (meditations
 
   "To categorize a collection by some function, use group-by."
-  (= __ (group-by count ["hello" "world" "foo" "bar"]))
+  (= {3 ["foo" "bar"] 5 ["hello" "world"]} (group-by count ["hello" "world" "foo" "bar"]))
 
 
   "You can simulate filter + remove in one pass"
